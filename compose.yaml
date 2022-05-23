@@ -1,0 +1,10 @@
+services:
+  shiny-server:
+    image: github.com/niklasdewally/docker-shiny
+    container_name: shiny-server
+    ports:
+      - 3838:3838 
+    volumes:
+      - /srv/shiny-server/:/srv/shiny-server/
+    restart: always
+
