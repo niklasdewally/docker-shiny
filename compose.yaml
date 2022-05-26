@@ -1,10 +1,21 @@
 services:
-  shiny-server:
-    image: github.com/niklasdewally/docker-shiny
-    container_name: shiny-server
+  shiny:
+    build: https://github.com/niklasdewally/docker-shiny.git
+    container_name: shiny_server
     ports:
       - 3838:3838 
     volumes:
       - /srv/shiny-server/:/srv/shiny-server/
     restart: always
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust" # Do not require a password
+    container_name: shiny_db
+    volumes:
+      - shiny_db:/var/lib/postgresql/data
+    restart: always
 
+volumes:
+  shiny_db:
+    
