@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     libcurl4-gnutls-dev \
     libssl-dev \
     libicu-dev \
+    libpq-dev \
     g++
   
 # R packages to install
@@ -18,6 +19,8 @@ RUN apt-get update && apt-get install -y \
 RUN R -e "install.packages(\"stringi\", configure.args=\"--disable-cxx11\",repos=\"https://cran.rstudio.com\")"
 RUN R -e 'install.packages(c(\
               "shiny", \
+              "dbplyr", \
+              "RPostgres", \
               "shinydashboard", \
               "vctrs", \
               "tidyverse", \
